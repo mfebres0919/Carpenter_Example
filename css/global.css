@@ -1,0 +1,1149 @@
+html, body {
+    margin: 0;
+}
+
+body {
+    overflow-x: hidden;
+    padding-top: 3rem;
+}
+
+/*========================================
+=============== FONTS ====================
+========================================== */
+/* plus-jakarta-sans-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/plus-jakarta-sans-v12-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* plus-jakarta-sans-500 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../fonts/plus-jakarta-sans-v12-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* plus-jakarta-sans-600 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../fonts/plus-jakarta-sans-v12-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* anton-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Anton';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/anton-v27-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* antonio-300 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Antonio';
+  font-style: normal;
+  font-weight: 300;
+  src: url('../fonts/antonio-v22-latin-300.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* antonio-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Antonio';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/antonio-v22-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+
+/*========================================
+=============== ROOT LEVEL ===============
+========================================== */
+:root {
+
+    /* TEXT COLORS */
+    --text-white: #fff;
+    --text-light-white: #ffffffba;
+    --text-oxford-blue: #002147;
+    --text-persian-blue: #1C3F94;
+    --text-dark-grey: #4A4C56;
+    --text-black: black;
+
+    /* BACKGROUND COLORS */
+    --bg-light-blue: #F2F5FD;
+    --bg-light-grey: #FBFBFB;
+    --bg-white: #fff;
+    --bg-oxford-blue: #002147;
+    --bg-persian-blue: #1C3F94;
+
+}
+
+/* ============================================ */
+/*                   HEADER                     */
+/* ============================================ */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  transition: transform 0.3s ease;
+}
+
+.header-hidden {
+  transform: translateY(-100%);
+}
+
+/* TOP BAR */
+.header-topbar {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-oxford-blue);
+  padding: 0.5rem 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .header-topbar {
+    display: flex;
+  }
+}
+
+.header-topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.header-topbar-link {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-light-white);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.3s ease;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.header-topbar-link:hover {
+  color: var(--text-white);
+}
+
+.header-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.header-topbar-right a {
+  display: flex;
+  align-items: center;
+  opacity: 0.75;
+  transition: opacity 0.3s ease;
+}
+
+.header-topbar-right a:hover {
+  opacity: 1;
+}
+
+.topbar-icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* MAIN NAV */
+.header-nav {
+  background-color: var(--bg-white);
+  border-bottom: 1px solid rgba(0, 33, 71, 0.1);
+}
+
+.header-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+}
+
+/* LOGO */
+.header-logo {
+  font-size: 1.5rem;
+  font-family: 'Anton', sans-serif;
+  color: var(--text-oxford-blue);
+  text-decoration: none;
+}
+
+/* DESKTOP NAV LINKS */
+.header-nav-links {
+  display: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 2rem;
+}
+
+.header-nav-links a {
+  color: var(--text-oxford-blue);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+  font-family: 'Anton', sans-serif;
+}
+
+.header-nav-links a:hover {
+  color: var(--text-persian-blue);
+}
+
+/* HIDE CTA ON MOBILE */
+.header-nav-inner .btn {
+  display: none;
+}
+
+/* HAMBURGER */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--text-oxford-blue);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* HAMBURGER ACTIVE STATE */
+.hamburger.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* MOBILE MENU */
+.mobile-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background-color: var(--bg-white);
+  border-top: 1px solid rgba(0, 33, 71, 0.1);
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 1.5rem;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+.mobile-menu.open {
+  max-height: 400px;
+  padding: 1.5rem;
+}
+
+.mobile-nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mobile-nav-links a {
+  color: var(--text-oxford-blue);
+  font-family: 'Anton', sans-serif;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.mobile-nav-links a:hover {
+  color: var(--text-persian-blue);
+}
+
+.mobile-menu .btn {
+  align-self: flex-start;
+}
+
+/* TABLET+ */
+@media (min-width: 768px) {
+  .header-nav-links {
+    display: flex;
+  }
+
+  .header-nav-inner .btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .hamburger {
+    display: none;
+  }
+
+  .mobile-menu {
+    display: none;
+  }
+}
+
+
+
+/* ============================================ */
+/*             SUBPAGES HERO SECTION            */
+/* ============================================ */
+.hero-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6rem 1.5rem;
+  color: var(--text-white);
+  overflow: hidden;
+  background-color: var(--bg-oxford-blue);
+}
+
+/* BG IMAGE */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* OVERLAY */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-color: rgba(0, 33, 71, 0.72);
+}
+
+/* CONTENT */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.hero-eyebrow {
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  color: var(--text-light-white);
+  margin: 0;
+}
+
+.hero-content h1 {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1.15;
+  margin: 0;
+  color: var(--text-white);
+  font-family: 'Anton', sans-serif;
+}
+
+.hero-desc {
+  color: var(--text-light-white);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  max-width: 560px;
+  margin: 0;
+}
+
+/* TABLET */
+@media (min-width: 600px) {
+  .hero-section {
+    padding: 7rem 2rem;
+  }
+}
+
+/* DESKTOP */
+@media (min-width: 1024px) {
+  .hero-section {
+    padding: 8rem 3rem;
+  }
+}
+
+
+
+
+
+p {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(13px, 2vw, 15px);
+    line-height: 1.5rem;
+}
+
+.antonio {
+    font-family: 'Antonio';
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+.anton {
+    font-family: 'Anton';
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+h1,h2,h3,h4,h5,h6, .btn, .btn {
+    font-family: 'Anton';
+    letter-spacing: .5px;
+}
+
+.persian-blue {
+    color: var(--text-persian-blue);
+}
+
+.oxford-blue {
+    color: var(--text-oxford-blue);
+}
+
+.text-black {
+    color: var(--text-black);
+}
+
+
+
+/* BUTTONS SYLING */
+.btn-container {
+    display: flex;
+    flex-wrap: wrap;    
+    gap: 1rem;
+}
+
+.btn {
+    text-decoration: none;
+    font-size: clamp(12px, 2vw, 14px);
+    display: inline-block;
+    padding: 0.6rem 1rem;
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
+    
+}
+
+.btn-1 {
+   background-color: var(--bg-white);
+   color: var(--text-oxford-blue);
+}
+
+.btn-2 {
+    background-color: transparent;
+    color: var(--text-white);
+    border: .5px solid var(--text-white);
+}
+
+.btn-3 {
+    background-color: var(--bg-persian-blue);
+    color: var(--text-white);
+}
+
+.btn-4 {
+    background-color: transparent;
+}
+
+.btn-1,
+.btn-2,
+.btn-3,
+.btn-4 {
+    transition: transform 0.3s ease;
+}
+
+.btn-1:hover,
+.btn-2:hover,
+.btn-3:hover,
+.btn-4:hover {
+    transform: translateY(-2px);
+}
+
+
+
+
+
+/*========================================
+============== CALL TO ACTION ============
+========================================== */
+.cta {
+    position: relative;
+    background-color: var(--bg-persian-blue);
+}
+
+@media (min-width: 700px) {
+    .cta {
+        margin: 2rem;
+        padding: 2rem;
+        border-radius: 2rem;
+        max-width: 1100px
+    }
+}
+
+@media (min-width: 1000px) {
+    .cta {
+        margin: 3rem auto;
+        padding: 3rem;
+    }
+}
+
+.cta .container {
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+    color: white;
+}
+
+.cta .container .btn-1 {
+    align-self: center;
+    margin-top: 1rem;
+}
+
+
+
+
+/*========================================
+============== FOOTER SECTION ============
+========================================== */
+.footer {
+  position: relative;
+  background-color: var(--bg-oxford-blue);
+  color: var(--text-white);
+}
+
+/* BG IMAGE */
+.footer-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.footer-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.footer-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* MAIN GRID */
+.footer-main {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding: 3rem 1.5rem;
+}
+
+/* LOGO */
+.footer-logo {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-family: 'Anton', sans-serif;
+}
+
+/* DESC */
+.footer-desc {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-light-white);
+  margin-bottom: 1.5rem;
+}
+
+/* SOCIALS */
+.footer-socials {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.footer-socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.15);
+  transition: background-color 0.3s ease;
+}
+
+.footer-socials a:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.footer-socials svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--text-white);
+}
+
+/* COL HEADINGS */
+.footer-col h4 {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* COL LINKS */
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.footer-col ul a {
+  color: var(--text-light-white);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.footer-col ul a:hover {
+  color: var(--text-white);
+}
+
+/* CONTACT LIST */
+.footer-contact li {
+  display: flex;
+  align-items: flex-start;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  color: var(--text-light-white);
+}
+
+.footer-contact svg {
+  width: 18px;
+  height: 18px;
+  fill: var(--text-white);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* BOTTOM BAR */
+.footer-bottom {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 0.85rem;
+  color: var(--text-light-white);
+}
+
+.footer-bottom a {
+  color: var(--text-light-white);
+  text-decoration: none;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.footer-bottom a:hover {
+  color: var(--text-white);
+  text-decoration: underline;
+}
+
+/* TABLET */
+@media (min-width: 600px) {
+  .footer-main {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-bottom {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+/* DESKTOP */
+@media (min-width: 1024px) {
+  .footer-main {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    padding: 4rem 3rem;
+  }
+}
+
+
+
+
+/* ============================================ */
+/*              SERVICE DETAIL                  */
+/* ============================================ */
+.service-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 3rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ============================================ */
+/*                  SIDEBAR                     */
+/* ============================================ */
+.service-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 600px) and (max-width: 1023px) {
+  .service-sidebar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 1023px) {
+  .service-detail {
+    padding: 3rem 2rem;
+  }
+
+  .slideshow-track {
+    height: 420px;
+  }
+
+  .service-sidebar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+    order: 2;
+  }
+
+  .service-main {
+    order: 1;
+  }
+}
+
+.sidebar-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sidebar-heading {
+  font-family: 'Anton', sans-serif;
+  font-size: 1.3rem;
+  letter-spacing: 0.5px;
+  color: var(--text-oxford-blue);
+  margin: 0;
+}
+
+.sidebar-heading2 {
+    background-color: var(--bg-light-grey);
+    padding: 1rem;
+
+}
+
+/* DOWNLOADS */
+.sidebar-downloads {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sidebar-download-btn {
+  display: block;
+  text-align: center;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(0, 33, 71, 0.15);
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  color: var(--text-oxford-blue);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.sidebar-download-btn:hover {
+  background-color: var(--bg-persian-blue);
+  color: var(--text-white);
+  border-color: var(--bg-persian-blue);
+}
+
+/* WHAT IS INCLUDED / OTHER SERVICES */
+.sidebar-included-wrapper {
+  border: 1px solid rgba(0, 33, 71, 0.1);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.sidebar-included {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-included li a {
+  display: block;
+  padding: 0.85rem 1rem;
+  text-decoration: none;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.9rem;
+  color: var(--text-dark-grey);
+  border-bottom: 1px solid rgba(0, 33, 71, 0.08);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: left;
+}
+
+.sidebar-included li:last-child a {
+  border-bottom: none;
+}
+
+.sidebar-included li a:hover {
+  background-color: var(--bg-persian-blue);
+  color: var(--text-white);
+}
+
+/* CONTACT BLOCK */
+.sidebar-contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sidebar-contact-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.contact-icon-wrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 0.5rem;
+  background-color: var(--bg-persian-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-icon-wrap svg {
+  width: 18px;
+  height: 18px;
+  fill: var(--text-white);
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.contact-label {
+  font-family: 'Anton', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+  color: var(--text-oxford-blue);
+}
+
+.contact-info a,
+.contact-info span {
+  font-size: 0.85rem;
+  color: var(--text-dark-grey);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-info a {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.contact-info a:hover {
+  color: var(--text-persian-blue);
+}
+
+/* ============================================ */
+/*               MAIN CONTENT                   */
+/* ============================================ */
+.service-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.service-header h1 {
+  margin: 0 0 1rem 0;
+  font-size: clamp(1.8rem, 4vw, 2.75rem);
+}
+
+.service-desc {
+  color: var(--text-dark-grey);
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* ============================================ */
+/*                 SLIDESHOW                    */
+/* ============================================ */
+.service-slideshow {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  background-color: var(--bg-light-grey);
+}
+
+.slideshow-track {
+  position: relative;
+  width: 100%;
+  height: 380px;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.slide picture,
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.slide-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.slide-arrow:hover {
+  background-color: var(--bg-white);
+}
+
+.slide-arrow svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--text-oxford-blue);
+}
+
+.slide-prev { left: 1rem; }
+.slide-next { right: 1rem; }
+
+.slideshow-dots {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  z-index: 2;
+}
+
+.slideshow-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  padding: 0;
+}
+
+.slideshow-dot.active {
+  background-color: var(--text-white);
+}
+
+/* ============================================ */
+/*               OUR PROCESS                    */
+/* ============================================ */
+.service-process {
+  background-color: var(--bg-light-blue);
+  border-radius: 1rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  border: 1px dashed rgba(28, 63, 148, 0.2);
+}
+
+.service-process h3 {
+  color: var(--text-oxford-blue);
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.service-process .btn {
+  align-self: flex-start;
+}
+
+.process-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.process-item {
+  border: 1px solid rgba(0, 33, 71, 0.1);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background-color: var(--bg-white);
+}
+
+.process-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  color: var(--text-oxford-blue);
+  text-align: left;
+  transition: background-color 0.3s ease;
+}
+
+.process-trigger:hover {
+  background-color: var(--bg-light-blue);
+}
+
+.process-trigger[aria-expanded="true"] {
+  background-color: var(--bg-light-blue);
+}
+
+.process-icon {
+  font-size: 1.3rem;
+  color: var(--text-persian-blue);
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.process-trigger[aria-expanded="true"] .process-icon {
+  transform: rotate(45deg);
+}
+
+.process-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  padding: 0 1.25rem;
+}
+
+.process-content.open {
+  max-height: 200px;
+  padding: 1rem 1.25rem;
+}
+
+.process-content p {
+  color: var(--text-dark-grey);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ============================================ */
+/*               RESPONSIVE                     */
+/* ============================================ */
+@media (min-width: 1024px) {
+  .service-detail {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 3rem;
+    padding: 4rem 3rem;
+  }
+
+  .service-sidebar {
+    width: 260px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 100px;
+  }
+
+  .service-main {
+    flex: 1;
+  }
+
+  .slideshow-track {
+    height: 460px;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 1023px) {
+  .service-detail {
+    padding: 3rem 2rem;
+  }
+
+  .slideshow-track {
+    height: 420px;
+  }
+}

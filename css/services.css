@@ -1,0 +1,189 @@
+
+/* ============================================ */
+/*              SERVICES SECTION                */
+/* ============================================ */
+.services-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 1.5rem;
+  background-color: var(--bg-white);
+}
+
+.services-container {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.services-container h1 {
+  margin: 0;
+  line-height: 1.1;
+}
+
+/* CARDS GRID */
+.cards-container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 1rem;
+  gap: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+/* CARD FLIP WRAPPER */
+.card {
+  perspective: 1000px;
+  height: 380px;
+  max-width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+}
+
+/* FRONT & BACK SHARED */
+.card-front,
+.card-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: 1rem;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  overflow: hidden;
+}
+
+/* FRONT */
+.card-front {
+  background-color: var(--bg-light-blue);
+  border: 0.2px solid rgba(128, 128, 128, 0.332);
+}
+
+.card-front h3 {
+  color: var(--text-oxford-blue);
+}
+
+.card-front p {
+  color: var(--text-dark-grey);
+}
+
+.card-front a {
+  color: var(--text-persian-blue);
+}
+
+.card-front .card-img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  margin-top: auto;
+}
+
+/* BACK */
+.card-back {
+  background-color: var(--bg-persian-blue);
+  transform: rotateY(180deg);
+}
+
+.card-back h3 {
+  color: var(--text-white);
+}
+
+.card-back p {
+  color: var(--text-light-white);
+}
+
+.card-back a {
+  color: var(--text-white);
+}
+
+.card-back .card-img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  margin-top: auto;
+  filter: brightness(0.85);
+}
+
+/* CAROUSEL DOTS */
+.services-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.services-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(0, 33, 71, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.services-dot.active {
+  background-color: var(--bg-persian-blue);
+}
+
+/* TABLET */
+@media (min-width: 600px) {
+  .cards-container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .services-dots {
+    display: none;
+  }
+}
+
+/* DESKTOP */
+@media (min-width: 1024px) {
+  .cards-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* MOBILE CAROUSEL */
+@media (max-width: 599px) {
+  .cards-container {
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .cards-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .card {
+    flex: 0 0 85%;
+    scroll-snap-align: center;
+  }
+}
+
+@media (max-width: 599px) {
+  .cards-container {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .card {
+    flex: 0 0 85vw;
+    height: 380px;
+  }
+}
