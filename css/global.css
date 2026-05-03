@@ -898,12 +898,10 @@ h1,h2,h3,h4,h5,h6, .btn, .btn {
 .contact-info span {
   font-size: 0.85rem;
   color: var(--text-dark-grey);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+
   text-decoration: none;
   transition: color 0.3s ease;
-}
-
-.contact-info a {
-    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .contact-info a:hover {
