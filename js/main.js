@@ -48,78 +48,136 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+// ============================================
+//          STANDARDS CARDS CAROUSEL
+// ============================================
+const carousel = document.querySelector('.standards-cards');
+const carouselDots = document.querySelectorAll('.carousel-dot');
+const standardsCards = document.querySelectorAll('.standards-card');
 
-  // ============================================
-  //          STANDARDS CARDS CAROUSEL
-  // ============================================
-  const carousel = document.querySelector('.standards-cards');
-  const carouselDots = document.querySelectorAll('.carousel-dot');
-  const standardsCards = document.querySelectorAll('.standards-card');
+let currentIndex = 0;
+let autoplayInterval;
 
-  let currentIndex = 0;
-  let autoplayInterval;
+function goToCard(index) {
+  if (!carousel || !standardsCards.length) return;
+  const cardWidth = standardsCards[0].offsetWidth + 16;
+  currentIndex = (index + standardsCards.length) % standardsCards.length;
+  carousel.scrollTo({ left: cardWidth * currentIndex, behavior: 'smooth' });
+  carouselDots.forEach(dot => dot.classList.remove('active'));
+  if (carouselDots[currentIndex]) carouselDots[currentIndex].classList.add('active');
+}
 
-  function goToCard(index) {
-    const cardWidth = carousel.querySelector('.standards-card').offsetWidth + 16;
+function startAutoplay() {
+  autoplayInterval = setInterval(() => {
+    goToCard(currentIndex + 1);
+  }, 5000);
+}
 
-    if (standardsCards[currentIndex]) {
-      standardsCards[currentIndex].querySelector('.standards-card-inner').style.transform = 'rotateY(0deg)';
-    }
+function stopAutoplay() {
+  clearInterval(autoplayInterval);
+}
 
-    currentIndex = index;
-    carousel.scrollTo({ left: cardWidth * currentIndex, behavior: 'smooth' });
+function isMobile() {
+  return window.innerWidth < 600;
+}
 
-    carouselDots.forEach(dot => dot.classList.remove('active'));
-    if (carouselDots[currentIndex]) carouselDots[currentIndex].classList.add('active');
-
-    setTimeout(() => {
-      if (standardsCards[currentIndex]) {
-        standardsCards[currentIndex].querySelector('.standards-card-inner').style.transform = 'rotateY(180deg)';
-      }
-    }, 400);
+if (carousel && standardsCards.length) {
+  if (isMobile()) {
+    startAutoplay();
+    carousel.addEventListener('touchstart', stopAutoplay);
+    carousel.addEventListener('touchend', () => setTimeout(startAutoplay, 1000));
+  } else {
+    standardsCards.forEach(card => {
+      const inner = card.querySelector('.standards-card-inner');
+      if (!inner) return;
+      card.addEventListener('mouseenter', () => inner.style.transform = 'rotateY(180deg)');
+      card.addEventListener('mouseleave', () => inner.style.transform = 'rotateY(0deg)');
+    });
   }
 
-  function startAutoplay() {
-    autoplayInterval = setInterval(() => {
-      const nextIndex = (currentIndex + 1) % standardsCards.length;
-      goToCard(nextIndex);
-    }, 5000);
-  }
-
-  function stopAutoplay() {
-    clearInterval(autoplayInterval);
-  }
-
-  function isMobile() {
-    return window.innerWidth < 600;
-  }
-
-  if (carousel && standardsCards.length) {
+  window.addEventListener('resize', () => {
+    stopAutoplay();
     if (isMobile()) {
-      goToCard(0);
       startAutoplay();
-      carousel.addEventListener('touchstart', stopAutoplay);
-      carousel.addEventListener('touchend', () => setTimeout(startAutoplay, 1000));
     } else {
       standardsCards.forEach(card => {
         const inner = card.querySelector('.standards-card-inner');
-        card.addEventListener('mouseenter', () => inner.style.transform = 'rotateY(180deg)');
-        card.addEventListener('mouseleave', () => inner.style.transform = 'rotateY(0deg)');
+        if (inner) inner.style.transform = 'rotateY(0deg)';
       });
     }
+  });
+}
 
-    window.addEventListener('resize', () => {
-      stopAutoplay();
-      if (isMobile()) {
-        goToCard(0);
-        startAutoplay();
-      } else {
-        standardsCards.forEach(card => {
-          card.querySelector('.standards-card-inner').style.transform = 'rotateY(0deg)';
-        });
-      }
-    });
+
+// ============================================
+//           SERVICES CARDS CAROUSEL
+// ============================================
+const servicesCarousel = document.querySelector('.cards-container');
+const servicesDots = document.querySelectorAll('.services-dot');
+const serviceCards = document.querySelectorAll('.cards-container .card');
+
+let servicesIndex = 0;
+let servicesInterval;
+
+function goToServiceCard(index) {
+  if (!servicesCarousel || !serviceCards.length) return;
+  const cardWidth = serviceCards[0].offsetWidth + 16;
+  servicesIndex = (index + serviceCards.length) % serviceCards.length;
+  servicesCarousel.scrollTo({ left: cardWidth * servicesIndex, behavior: 'smooth' });
+  servicesDots.forEach(dot => dot.classList.remove('active'));
+  if (servicesDots[servicesIndex]) servicesDots[servicesIndex].classList.add('active');
+}
+
+function startServicesAutoplay() {
+  servicesInterval = setInterval(() => {
+    goToServiceCard(servicesIndex + 1);
+  }, 5000);
+}
+
+function stopServicesAutoplay() {
+  clearInterval(servicesInterval);
+}
+
+function attachServiceHoverListeners() {
+  serviceCards.forEach(card => {
+    const inner = card.querySelector('.card-inner');
+    if (!inner) return;
+    card.addEventListener('mouseenter', () => inner.style.transform = 'rotateY(180deg)');
+    card.addEventListener('mouseleave', () => inner.style.transform = 'rotateY(0deg)');
+  });
+}
+
+function resetServiceCards() {
+  serviceCards.forEach(card => {
+    const inner = card.querySelector('.card-inner');
+    if (inner) inner.style.transform = 'rotateY(0deg)';
+  });
+}
+
+function isServicesMobile() {
+  return window.innerWidth < 600;
+}
+
+if (servicesCarousel && serviceCards.length) {
+  if (isServicesMobile()) {
+    startServicesAutoplay();
+    servicesCarousel.addEventListener('touchstart', stopServicesAutoplay);
+    servicesCarousel.addEventListener('touchend', () => setTimeout(startServicesAutoplay, 1000));
+  } else {
+    resetServiceCards();
+    attachServiceHoverListeners();
   }
+
+  window.addEventListener('resize', () => {
+    stopServicesAutoplay();
+    resetServiceCards();
+    if (isServicesMobile()) {
+      startServicesAutoplay();
+    } else {
+      attachServiceHoverListeners();
+    }
+  });
+}
 
 
   // ============================================
