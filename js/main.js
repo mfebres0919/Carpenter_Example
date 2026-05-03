@@ -67,7 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     currentIndex = index;
-
     carousel.scrollTo({ left: cardWidth * currentIndex, behavior: 'smooth' });
 
     carouselDots.forEach(dot => dot.classList.remove('active'));
@@ -212,15 +211,42 @@ document.addEventListener('DOMContentLoaded', () => {
   //           PORTFOLIO CAROUSEL
   // ============================================
   const portfolioCarousel = document.querySelector('.portfolio-cards');
-  const portfolioDots = document.querySelectorAll('.portfolio-dot');
   const portfolioCards = document.querySelectorAll('.portfolio-card');
 
+  let portfolioIndex = 0;
+  let portfolioInterval;
+
+  function goToPortfolioCard(index) {
+    if (!portfolioCarousel || !portfolioCards.length) return;
+    const cardWidth = portfolioCards[0].offsetWidth + 24; // 24 = gap
+    portfolioIndex = (index + portfolioCards.length) % portfolioCards.length;
+    portfolioCarousel.scrollTo({
+      left: cardWidth * portfolioIndex,
+      behavior: 'smooth'
+    });
+  }
+
+  function startPortfolioAutoplay() {
+    portfolioInterval = setInterval(() => {
+      goToPortfolioCard(portfolioIndex + 1);
+    }, 3000);
+  }
+
+  function stopPortfolioAutoplay() {
+    clearInterval(portfolioInterval);
+  }
+
   if (portfolioCarousel && portfolioCards.length) {
-    portfolioCarousel.addEventListener('scroll', () => {
-      const cardWidth = portfolioCarousel.querySelector('.portfolio-card').offsetWidth + 16;
-      const index = Math.round(portfolioCarousel.scrollLeft / cardWidth);
-      portfolioDots.forEach(dot => dot.classList.remove('active'));
-      if (portfolioDots[index]) portfolioDots[index].classList.add('active');
+    startPortfolioAutoplay();
+
+    // pause on hover
+    portfolioCarousel.addEventListener('mouseenter', stopPortfolioAutoplay);
+    portfolioCarousel.addEventListener('mouseleave', startPortfolioAutoplay);
+
+    // pause on swipe, resume after
+    portfolioCarousel.addEventListener('touchstart', stopPortfolioAutoplay);
+    portfolioCarousel.addEventListener('touchend', () => {
+      setTimeout(startPortfolioAutoplay, 1000);
     });
   }
 
@@ -237,10 +263,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function goToSlide(index) {
     slides[slideIndex].classList.remove('active');
-    slideshowDots[slideIndex].classList.remove('active');
+    if (slideshowDots[slideIndex]) slideshowDots[slideIndex].classList.remove('active');
     slideIndex = (index + slides.length) % slides.length;
     slides[slideIndex].classList.add('active');
-    slideshowDots[slideIndex].classList.add('active');
+    if (slideshowDots[slideIndex]) slideshowDots[slideIndex].classList.add('active');
   }
 
   if (slides.length && prevBtn && nextBtn) {
@@ -274,26 +300,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-});
 
+  // ============================================
+  //           PROCESS ACCORDION
+  // ============================================
+  const processTriggers = document.querySelectorAll('.process-trigger');
 
+  processTriggers.forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const content = trigger.nextElementSibling;
+      const isOpen = trigger.getAttribute('aria-expanded') === 'true';
 
-// PROCESS ACCORDION
-const processTriggers = document.querySelectorAll('.process-trigger');
+      processTriggers.forEach(t => {
+        t.setAttribute('aria-expanded', 'false');
+        t.nextElementSibling.classList.remove('open');
+      });
 
-processTriggers.forEach(trigger => {
-  trigger.addEventListener('click', () => {
-    const content = trigger.nextElementSibling;
-    const isOpen = trigger.getAttribute('aria-expanded') === 'true';
-
-    processTriggers.forEach(t => {
-      t.setAttribute('aria-expanded', 'false');
-      t.nextElementSibling.classList.remove('open');
+      if (!isOpen) {
+        trigger.setAttribute('aria-expanded', 'true');
+        content.classList.add('open');
+      }
     });
-
-    if (!isOpen) {
-      trigger.setAttribute('aria-expanded', 'true');
-      content.classList.add('open');
-    }
   });
+
 });
