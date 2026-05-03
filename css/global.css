@@ -4,7 +4,7 @@ html, body {
 
 body {
     overflow-x: hidden;
-    padding-top: 3rem;
+    padding-top: 4rem;
 }
 
 /*========================================
@@ -317,7 +317,7 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 6rem 1.5rem;
+  padding: 4rem 1rem 4rem 1rem;
   color: var(--text-white);
   overflow: hidden;
   background-color: var(--bg-oxford-blue);
