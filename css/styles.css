@@ -278,10 +278,10 @@
 .about-img-wrapper::before {
   content: '';
   position: absolute;
-  bottom: -140px;
-  right: -140px;
-  width: 450px;
-  height: 450px;
+  bottom: -20px;
+  right: 140px;
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
   border: 1.5px solid rgba(28, 63, 148, 0.1);
   pointer-events: none;
@@ -292,8 +292,8 @@
 .about-img-wrapper::after {
   content: '';
   position: absolute;
-  bottom: -80px;
-  right: -80px;
+  bottom: 80px;
+  right: 80px;
   width: 300px;
   height: 300px;
   border-radius: 50%;
