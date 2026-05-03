@@ -1,0 +1,245 @@
+/* ============================================ */
+/*              CONTACT SECTION                 */
+/* ============================================ */
+.contact-section {
+  padding: 3rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.contact-heading {
+  text-align: center;
+}
+
+.contact-heading h1 {
+  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 2.75rem);
+}
+
+/* WRAPPER */
+.contact-wrapper {
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+/* FORM SIDE */
+.contact-form-side {
+  background-color: var(--bg-light-blue);
+  padding: 2rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-oxford-blue);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(0, 33, 71, 0.15);
+  border-radius: 0.5rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.9rem;
+  color: var(--text-oxford-blue);
+  background-color: var(--bg-white);
+  outline: none;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--bg-persian-blue);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--text-dark-grey);
+  opacity: 0.6;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* SELECT */
+.select-wrapper {
+  position: relative;
+}
+
+.select-wrapper select {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(0, 33, 71, 0.15);
+  border-radius: 0.5rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.9rem;
+  color: var(--text-dark-grey);
+  background-color: var(--bg-white);
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.select-wrapper select:focus {
+  border-color: var(--bg-persian-blue);
+}
+
+.select-arrow {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  fill: var(--text-dark-grey);
+  pointer-events: none;
+}
+
+/* SUBMIT */
+.form-submit {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.form-submit button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* INFO SIDE */
+.contact-info-side {
+  background-color: var(--bg-oxford-blue);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-info-card {
+  background-color: rgba(255, 255, 255, 0.07);
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.contact-info-header h4 {
+  color: var(--text-white);
+  margin: 0;
+  font-size: 1rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.contact-info-body {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.contact-info-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--bg-persian-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-info-icon img {
+  width: 18px;
+  height: 18px;
+}
+
+.contact-info-body p,
+.contact-info-body a {
+  color: var(--text-light-white);
+  font-size: 0.9rem;
+  margin: 0;
+  text-decoration: none;
+  font-family: 'Plus Jakarta Sans', sans-serif; 
+  transition: color 0.3s ease;
+}
+
+.contact-info-body a:hover {
+  color: var(--text-white);
+}
+
+.contact-hours {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.contact-hours p {
+  color: var(--text-light-white);
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+/* TABLET */
+@media (min-width: 600px) and (max-width: 1023px) {
+  .contact-section {
+    padding: 3rem 2rem;
+  }
+
+  .contact-info-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+}
+
+/* DESKTOP */
+@media (min-width: 1024px) {
+  .contact-section {
+    padding: 4rem 3rem;
+  }
+
+  .contact-wrapper {
+    flex-direction: row;
+  }
+
+  .contact-form-side {
+    flex: 1.2;
+    padding: 3rem;
+  }
+
+  .contact-info-side {
+    flex: 0.8;
+    padding: 3rem 2rem;
+  }
+}
